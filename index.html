@@ -1,555 +1,111 @@
 <!DOCTYPE html>
-<html lang="zh">
-
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>未寻 | Senior Backend Engineer</title>
-    <meta name="description" content="资深后端工程师，专注于高并发、分布式系统架构设计">
-    <meta name="keywords" content="Java,Go,Python,微服务,分布式,架构师">
-    <meta name="theme-color" content="#0d1117">
-    <link rel="icon" type="image/svg+xml" href="static/img/avatar.svg">
-    <link rel="alternate icon" href="favicon.ico">
-    <link rel="stylesheet" href="static/css/index.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>沈伟 Shen Wei | 机器人与智能系统</title>
+  <meta name="description" content="沈伟的个人主页。北京航空航天大学电子信息，关注多智能体协同、异构机器人、ROS 2 导航与机器人仿真学习。">
+  <meta name="keywords" content="沈伟,Shen Wei,北京航空航天大学,多智能体协同,异构机器人,ROS2,机器人导航">
+  <meta name="theme-color" content="#0b1017">
+  <meta property="og:title" content="沈伟 Shen Wei | 机器人与智能系统">
+  <meta property="og:description" content="从仿真走向真实世界，探索机器人感知、导航与协同。">
+  <meta property="og:url" content="https://roskyrie.github.io/home/">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://roskyrie.github.io/home/">
+  <link rel="icon" type="image/svg+xml" href="static/img/avatar.svg">
+  <link rel="stylesheet" href="static/css/profile.css">
 </head>
-
 <body>
-    <div id="app">
-        <canvas id="particles"></canvas>
-        <div class="glow-orb orb-1"></div>
-        <div class="glow-orb orb-2"></div>
+  <a class="skip-link" href="#main">跳转到正文</a>
+  <header class="site-header">
+    <nav class="navigation wrap" aria-label="主导航">
+      <a class="brand" href="#top" aria-label="沈伟，返回首页"><span class="brand-mark" aria-hidden="true">sw.</span><span>沈伟 <span class="brand-en">/ SHEN WEI</span></span></a>
+      <div class="nav-links">
+        <a href="#about">关于</a><a href="#research">科研项目</a><a href="#education">教育经历</a><a href="#skills">技能</a><a href="#contact">联系</a>
+      </div>
+    </nav>
+  </header>
 
-        <div class="app-container">
-            <!-- 导航栏 -->
-            <nav class="navbar">
-                <div class="nav-brand">&lt;/&gt; {{ site.name }}</div>
-                <div class="nav-links">
-                    <a v-for="link in navLinks" :key="link.id" :href="'#' + link.id">{{ link.title }}</a>
-                </div>
-            </nav>
+  <main id="main">
+    <section id="top" class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> ROBOTICS · MULTI-AGENT SYSTEMS</p>
+        <h1 id="hero-title">你好，我是<span class="name">沈伟<span class="name-dot">.</span></span></h1>
+        <p class="hero-subtitle">从仿真走向真实世界，<br>探索机器人的<span>自主与协同。</span></p>
+        <p class="hero-description">目前在北京航空航天大学学习电子信息，主修方向为多智能体协同与异构机器人。通过导航实践、真机部署和仿真实验，持续积累机器人系统开发经验。</p>
+        <div class="hero-actions"><a class="button primary" href="#research">查看科研项目 <span aria-hidden="true">↗</span></a><a class="button secondary" href="mailto:HDUSW2003@163.COM">联系我 <span aria-hidden="true">↗</span></a></div>
+        <div class="hero-tags" aria-label="研究关键词"><span>ROS 2</span><span>自主导航</span><span>异构机器人</span><span>仿真与学习</span></div>
+      </div>
+      <aside class="profile-card" aria-label="个人信息">
+        <div class="profile-top"><img class="portrait" src="static/img/portrait.jpg" width="120" height="121" alt="沈伟的照片"><div><p class="profile-name">沈伟 <span>Shen Wei</span></p><p class="profile-handle">@roskyrie</p></div></div>
+        <div class="profile-school"><span class="small-label">CURRENTLY AT</span><h2>北京航空航天大学</h2><p>电子信息</p><p class="platform">数据科学与智能计算平台</p></div>
+        <div class="profile-focus"><span class="small-label">RESEARCH FOCUS</span><p>多智能体协同 <span aria-hidden="true">/</span> 异构机器人</p></div>
+        <a class="profile-github" href="https://github.com/roskyrie" target="_blank" rel="noopener noreferrer"><span>GitHub / roskyrie</span><span aria-hidden="true">↗</span></a>
+      </aside>
+      <a class="scroll-note" href="#about">继续了解 <span aria-hidden="true">↓</span></a>
+    </section>
 
-            <!-- Hero -->
-            <header class="hero">
-                <div class="hero-content">
-                    <div class="avatar-container">
-                        <img :src="profile.avatar" :alt="profile.name" class="avatar">
-                    </div>
-                    <h1 class="title">
-                        <span>{{ typedText }}</span><span class="cursor">|</span>
-                    </h1>
-                    <p class="subtitle">{{ profile.title }}</p>
-                    <p class="bio">{{ profile.bio }}</p>
-                    <div class="social-links">
-                        <a v-for="social in socialLinks" :key="social.name" :href="social.url" target="_blank"
-                            class="social-link" :title="social.name">
-                            <i :class="social.icon"></i>
-                        </a>
-                    </div>
-                </div>
-            </header>
+    <section id="about" class="section wrap" aria-labelledby="about-title">
+      <div class="section-heading"><div><p class="eyebrow">01 / ABOUT</p><h2 id="about-title">关于我</h2></div><p class="section-note">把想法放进仿真，再带到真实世界。</p></div>
+      <div class="about-layout"><p class="about-lead">我的兴趣在于：<br>让机器人理解环境，<br><span>并在其中自主行动。</span></p><div class="about-text"><p>我于 2022 年至 2026 年在杭州电子科技大学通信工程学院学习信息对抗技术，2026 年 9 月起在北京航空航天大学学习电子信息，研究方向聚焦多智能体协同与异构机器人。</p><p>围绕 ROS 2，我实践了巡检车建图与导航、校园巡检系统和机器狗运动控制；目前进一步探索导航规划、模仿学习、强化学习及视觉模型驱动的机器人仿真。</p><p>熟悉 Linux 环境下的 Python 开发，学习过嵌入式硬件相关课程，重视从软件接口到硬件部署的动手实践。</p></div></div>
+      <div class="focus-grid"><article class="focus-item"><span class="focus-number">01</span><h3>自主导航</h3><p>从 ROS 2、Navigation 2 建图导航，到基于 Qwen 的语义导航实践。</p></article><article class="focus-item"><span class="focus-number">02</span><h3>异构机器人</h3><p>在轮式无人车和四足机器狗上积累系统集成与运动控制经验。</p></article><article class="focus-item"><span class="focus-number">03</span><h3>仿真与机器人学习</h3><p>探索 MuJoCo、Isaac Sim 等环境中的模仿学习、强化学习与动作重定位。</p></article></div>
+    </section>
 
-            <main class="main-content">
-                <!-- About -->
-                <section id="about" class="section" :class="{ visible: visibleSections.about }">
-                    <div class="section-header">
-                        <i class="ri-user-star-line"></i>
-                        <h2>About Me</h2>
-                        <span class="section-line"></span>
-                    </div>
-                    <div class="about-intro">
-                        <p>{{ about.intro }}</p>
-                    </div>
-                    <div class="about-grid">
-                        <div v-for="card in about.cards" :key="card.title" class="about-card">
-                            <div class="about-icon"><i :class="card.icon"></i></div>
-                            <h3>{{ card.title }}</h3>
-                            <p>{{ card.desc }}</p>
-                        </div>
-                    </div>
-                    <div class="quote-box">
-                        <i class="ri-double-quotes-l"></i>
-                        <p>{{ hitokoto }}</p>
-                    </div>
-                </section>
+    <section id="research" class="section wrap" aria-labelledby="research-title">
+      <div class="section-heading"><div><p class="eyebrow">02 / RESEARCH & PROJECTS</p><h2 id="research-title">科研与项目</h2></div><p class="section-note">从独立实践到实验室系统。</p></div>
+      <div class="project-list">
+        <article class="project-card project-featured">
+          <div class="project-content"><div class="project-meta"><span class="pill ongoing">探索中</span><span>2026.09 — 至今 · 个人科研</span></div><h3>机器人仿真与学习</h3><p class="project-intro">在多种仿真环境中探索机器人导航、运动学习与操作任务。</p><ul class="project-details"><li>探索 Scan-Planner 导航规划器。</li><li>探索 G1 人形机器人的模仿学习，借助 GMR + GVHMR 动作重定位生成训练动作数据。</li><li>探索 Unitree-mjlab 的 Go2 强化学习，以及基于视觉模型的码垛仿真。</li></ul><div class="tags"><span>MuJoCo</span><span>Isaac Sim</span><span>Gazebo</span><span>RViz</span><span>GMR + GVHMR</span></div></div>
+          <div class="project-visual simulation-visual"><figure><img src="static/img/palletizing-simulation.jpg" alt="简历中的码垛仿真、地图与导航可视化截图" width="480" height="203" loading="lazy"><figcaption>码垛仿真与系统可视化</figcaption></figure><div class="simulation-pair"><figure><img src="static/img/motion-retargeting.jpg" alt="简历中的人体动作与机器人动作重定位对比" width="561" height="132" loading="lazy"><figcaption>动作重定位探索</figcaption></figure><figure><img src="static/img/go2-simulation.jpg" alt="简历中的 Go2 四足机器人仿真" width="191" height="195" loading="lazy"><figcaption>Go2 仿真</figcaption></figure></div></div>
+        </article>
+        <article class="project-card">
+          <div class="project-content"><div class="project-meta"><span class="pill">实验室项目</span><span>2026.05 — 2026.08</span></div><h3>校园巡检无人系统</h3><p class="project-intro">将无人车建图、语义导航与机器狗运动控制接入巡检系统。</p><ul class="project-details"><li>使用 wheeltec-car 无人车为科研平台楼层建图。</li><li>基于 Qwen 大模型基座实现语义导航。</li><li>负责 Debot 越疆机器狗的运动控制，将功能封装为 FastAPI 接口，供系统调用。</li></ul><div class="tags"><span>ROS 2</span><span>Python</span><span>FastAPI</span><span>Qwen</span><span>语义导航</span></div></div>
+          <div class="project-visual campus-visual"><figure><img src="static/img/campus-map.png" alt="使用 wheeltec-car 构建的科研平台楼层地图" width="251" height="244" loading="lazy"><figcaption>楼层建图</figcaption></figure><figure><img src="static/img/robot-dog.jpg" alt="校园巡检项目中的 Debot 越疆机器狗" width="202" height="219" loading="lazy"><figcaption>机器狗运动控制</figcaption></figure></div>
+        </article>
+        <article class="project-card">
+          <div class="project-content"><div class="project-meta"><span class="pill">个人项目</span><span>2025.04 — 2026.03</span></div><h3>ROS 2 自动巡检智能车</h3><p class="project-intro">完成从自动巡检仿真到真实智能车建图与导航的实践。</p><ul class="project-details"><li>基于 ROS 2 和 Navigation 2 设计自动巡检智能车仿真。</li><li>完成真机部署，使用 fishros 智能车建图并实现导航功能。</li></ul><div class="tags"><span>Linux</span><span>ROS 2</span><span>Python</span><span>Navigation 2</span><span>Gazebo</span></div><a class="text-link" href="https://github.com/Kobe24forever263/Learn_ros_patrol" target="_blank" rel="noopener noreferrer">查看项目源码 <span aria-hidden="true">↗</span></a></div>
+          <div class="project-visual patrol-visual"><figure><img src="static/img/patrol-car.jpg" alt="完成真机部署的 fishros 自动巡检智能车" width="210" height="270" loading="lazy"><figcaption>从仿真到真机</figcaption></figure><div class="visual-note"><span class="small-label">SIM TO REAL</span><p>建图<br>定位<br>自主导航</p></div></div>
+        </article>
+      </div>
+    </section>
 
-                <!-- Skills -->
-                <section id="skills" class="section" :class="{ visible: visibleSections.skills }">
-                    <div class="section-header">
-                        <i class="ri-stack-line"></i>
-                        <h2>Technology Stack</h2>
-                        <span class="section-line"></span>
-                    </div>
-                    <div class="tech-categories">
-                        <div v-for="category in skills" :key="category.name" class="tech-category">
-                            <h3><i :class="category.icon"></i> {{ category.name }}</h3>
-                            <div class="tech-items">
-                                <div v-for="item in category.items" :key="item.name" class="tech-item"
-                                    :data-level="item.level">
-                                    <span class="tech-name">{{ item.name }}</span>
-                                    <div class="tech-bar">
-                                        <div class="tech-progress"
-                                            :style="{ width: visibleSections.skills ? item.level + '%' : 0 }"></div>
-                                    </div>
-                                    <span class="tech-level">{{ item.levelName }}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+    <section id="education" class="section wrap" aria-labelledby="education-title">
+      <div class="section-heading"><div><p class="eyebrow">03 / EDUCATION</p><h2 id="education-title">教育经历</h2></div></div>
+      <div class="education-list">
+        <article class="education-item"><div class="education-date">2026.09 — 至今<span class="education-marker" aria-hidden="true"></span></div><div><p class="education-caption">BEIHANG UNIVERSITY</p><h3>北京航空航天大学</h3><p class="education-major">电子信息 · 数据科学与智能计算平台</p><p class="education-detail">主修方向：多智能体协同、异构机器人</p></div></article>
+        <article class="education-item"><div class="education-date">2022.09 — 2026.06<span class="education-marker" aria-hidden="true"></span></div><div><p class="education-caption">HANGZHOU DIANZI UNIVERSITY</p><h3>杭州电子科技大学</h3><p class="education-major">通信工程学院 · 信息对抗技术</p><div class="education-metrics"><span>GPA <strong>3.94 / 5</strong></span><span>专业排名 <strong>前 15%</strong></span></div><p class="education-detail">专业课程：Linux 操作系统、机器学习、物联网技术、嵌入式硬件课程与设计、C 语言程序设计。</p></div></article>
+      </div>
+    </section>
 
-                <!-- Projects -->
-                <section id="projects" class="section" :class="{ visible: visibleSections.projects }">
-                    <div class="section-header">
-                        <i class="ri-folder-fill"></i>
-                        <h2>Core Projects</h2>
-                        <span class="section-line"></span>
-                    </div>
-                    <div class="projects-grid">
-                        <div v-for="project in projects" :key="project.title" class="project-card">
-                            <div class="project-header">
-                                <i :class="project.icon"></i>
-                                <h3>{{ project.title }}</h3>
-                            </div>
-                            <p class="project-desc">{{ project.desc }}</p>
-                            <div class="project-tags">
-                                <span v-for="tag in project.tags" :key="tag">{{ tag }}</span>
-                            </div>
-                            <div class="project-metrics">
-                                <div v-for="metric in project.metrics" :key="metric.label" class="metric">
-                                    <span class="metric-value">{{ metric.value }}</span>
-                                    <span class="metric-label">{{ metric.label }}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+    <section id="skills" class="section wrap" aria-labelledby="skills-title">
+      <div class="section-heading"><div><p class="eyebrow">04 / TOOLKIT & ACHIEVEMENTS</p><h2 id="skills-title">技能与积累</h2></div><p class="section-note">在实践中学习，在迭代中积累。</p></div>
+      <div class="toolkit-grid"><article class="toolkit-card"><span class="small-label">DEVELOPMENT</span><h3>编程与开发</h3><p>熟悉 Linux 操作系统下的 Python 开发，具备 C 语言编程与嵌入式课程实践基础。</p><div class="tags"><span>Python</span><span>C</span><span>Linux</span><span>FastAPI</span></div></article><article class="toolkit-card"><span class="small-label">ROBOTICS</span><h3>机器人系统</h3><p>约一年半 ROS 2 学习经历，实践建图、导航、机器人运动控制与系统接口集成。</p><div class="tags"><span>ROS 2</span><span>Navigation 2</span><span>RViz</span><span>Gazebo</span></div></article><article class="toolkit-card"><span class="small-label">SIMULATION & LEARNING</span><h3>仿真与学习工具</h3><p>在个人科研中探索多种仿真平台，以及导航规划、模仿学习和强化学习。</p><div class="tags"><span>MuJoCo</span><span>Isaac Sim</span><span>GMR</span><span>GVHMR</span></div></article></div>
+      <div class="achievement-grid"><article><span class="small-label">LANGUAGE</span><h3>英语沟通与文献阅读</h3><div class="score-row"><p>CET-4 <strong>580</strong></p><p>CET-6 <strong>540</strong></p></div><p class="muted">具备英语沟通与外文文献阅读能力。</p></article><article><span class="small-label">SCHOLARSHIPS</span><h3>本科校级优秀奖学金</h3><div class="scholarship-row"><p>二等奖 <strong>× 2</strong></p><p>三等奖 <strong>× 2</strong></p></div><p class="muted">杭州电子科技大学本科期间获得。</p></article></div>
+    </section>
 
-                <!-- Experience -->
-                <section id="experience" class="section" :class="{ visible: visibleSections.experience }">
-                    <div class="section-header">
-                        <i class="ri-time-line"></i>
-                        <h2>Experience</h2>
-                        <span class="section-line"></span>
-                    </div>
-                    <div class="timeline">
-                        <div v-for="(item, index) in experience" :key="index" class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <div class="timeline-date">{{ item.date }}</div>
-                                <h3>{{ item.title }}</h3>
-                                <p class="timeline-company">{{ item.company }}</p>
-                                <p class="timeline-desc">{{ item.desc }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+    <section id="contact" class="contact-section wrap" aria-labelledby="contact-title">
+      <div><p class="eyebrow">05 / GET IN TOUCH</p><h2 id="contact-title">一起交流，<br><span>探索更多可能。</span></h2><p class="contact-description">欢迎交流机器人导航、异构机器人、多智能体协同与仿真学习。</p></div>
+      <div class="contact-list"><a href="mailto:HDUSW2003@163.COM"><span class="small-label">EMAIL</span><span class="contact-value">HDUSW2003@163.COM</span><span aria-hidden="true">↗</span></a><a href="tel:+8618868446993"><span class="small-label">PHONE / WECHAT</span><span class="contact-value">18868446993 <small>微信同号</small></span><span aria-hidden="true">↗</span></a><a href="https://github.com/roskyrie" target="_blank" rel="noopener noreferrer"><span class="small-label">GITHUB</span><span class="contact-value">roskyrie</span><span aria-hidden="true">↗</span></a></div>
+    </section>
+  </main>
 
-                <!-- Stats -->
-                <section id="stats" class="section section-stats" :class="{ visible: visibleSections.stats }">
-                    <div class="stats-grid">
-                        <div v-for="stat in stats" :key="stat.label" class="stat-item">
-                            <div class="stat-number" :id="stat.id || null">{{ stat.value }}</div>
-                            <div class="stat-label">{{ stat.label }}</div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Poetry -->
-                <section id="poetry" class="section section-poetry" :class="{ visible: visibleSections.poetry }">
-                    <div class="poetry-box">
-                        <i class="ri-quill-pen-line"></i>
-                        <p>{{ poetry }}</p>
-                    </div>
-                </section>
-
-                <!-- Links -->
-                <section id="links" class="section" :class="{ visible: visibleSections.links }">
-                    <div class="section-header">
-                        <i class="ri-link"></i>
-                        <h2>Resources</h2>
-                        <span class="section-line"></span>
-                    </div>
-                    <div class="links-grid">
-                        <a v-for="link in resourceLinks" :key="link.name" :href="link.url" target="_blank"
-                            class="link-card">
-                            <i :class="link.icon"></i>
-                            <span>{{ link.name }}</span>
-                            <p>{{ link.desc }}</p>
-                        </a>
-                    </div>
-                </section>
-            </main>
-
-            <!-- Footer -->
-            <footer id="contact" class="footer">
-                <div class="footer-content">
-                    <div class="footer-info">
-                        <h3>{{ site.name }}</h3>
-                        <p>{{ site.slogan }}</p>
-                    </div>
-                    <div class="footer-contact">
-                        <h4>Connect</h4>
-                        <div class="contact-items">
-                            <a v-for="social in socialLinks" :key="social.name" :href="social.url" target="_blank">
-                                <i :class="social.icon"></i> {{ social.name }}
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p class="copyright-main">&copy; 2019 - {{ currentYear }} {{ site.name }} · All Rights Reserved</p>
-                    <p class="copyright-sub">
-                        <span>Powered by Vue 3</span>
-                        <span class="divider">|</span>
-                        <span><a href="https://github.com/roskyrie" target="_blank">GitHub</a></span>
-                        <span class="divider">|</span>
-                        <span>Made with <i class="ri-heart-fill"></i> in China</span>
-                    </p>
-                </div>
-            </footer>
-        </div>
-    </div>
-
-    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-    <script>
-        const { createApp, ref, reactive, onMounted, computed } = Vue;
-
-        createApp({
-            setup() {
-                // ===== 站点配置 =====
-                const site = reactive({
-                    name: '未寻',
-                    slogan: '探索未知，代码为舟'
-                });
-
-                // ===== 导航链接 =====
-                const navLinks = ref([
-                    { id: 'about', title: '关于' },
-                    { id: 'skills', title: '技术栈' },
-                    { id: 'projects', title: '项目' },
-                    { id: 'experience', title: '经历' },
-                    { id: 'contact', title: '联系' }
-                ]);
-
-                // ===== 个人信息 =====
-                const profile = reactive({
-                    name: '未寻',
-                    avatar: 'static/img/avatar.svg',
-                    title: 'Senior Backend Engineer · System Architect',
-                    bio: '专注于高并发、高可用分布式系统架构设计，深耕 Java 生态，拥抱云原生技术'
-                });
-
-                // ===== 社交链接 =====
-                const socialLinks = ref([
-                    { name: 'GitHub', icon: 'ri-github-fill', url: 'https://github.com/roskyrie' },
-                    { name: 'Email', icon: 'ri-mail-fill', url: '#' },
-                    { name: '掘金', icon: 'ri-quill-pen-fill', url: '#' },
-                    { name: '知乎', icon: 'ri-zhihu-fill', url: '#' },
-                    { name: '微信', icon: 'ri-wechat-fill', url: '#' }
-                ]);
-
-                // ===== 关于我 =====
-                const about = reactive({
-                    intro: '资深后端工程师，拥有多年互联网研发经验。主导过多个核心业务系统的架构设计与落地实施，在高并发、分布式、微服务架构领域有深厚积累。',
-                    cards: [
-                        { icon: 'ri-code-s-slash-fill', title: '服务端开发', desc: '精通 Java，熟练掌握 Go、Python，具备多语言混合编程能力，专注于构建高性能服务端应用' },
-                        { icon: 'ri-cloud-fill', title: '微服务架构', desc: '精通 Spring Cloud / Dubbo 微服务体系，熟悉 Service Mesh，有大规模微服务治理与调优实战经验' },
-                        { icon: 'ri-database-2-fill', title: '数据架构', desc: '精通 MySQL 调优、Redis 缓存架构，熟悉 Elasticsearch、MongoDB、ClickHouse 等数据存储方案' },
-                        { icon: 'ri-route-fill', title: '分布式系统', desc: '熟悉分布式事务、分布式锁、一致性协议，有高并发系统设计与调优经验' },
-                        { icon: 'ri-layout-fill', title: '全栈能力', desc: '具备前端开发能力，熟练使用 Vue3、React、TypeScript，可独立完成全栈项目开发' },
-                        { icon: 'ri-smartphone-fill', title: '移动端开发', desc: '熟悉 uni-app 跨端开发框架，具备小程序、H5、App 多端统一开发能力' }
-                    ]
-                });
-
-                // ===== 技术栈 =====
-                const skills = ref([
-                    {
-                        name: '编程语言',
-                        icon: 'ri-code-s-fill',
-                        items: [
-                            { name: 'Java', level: 95, levelName: '精通' },
-                            { name: 'Python', level: 75, levelName: '熟练' },
-                            { name: 'Go', level: 65, levelName: '掌握' },
-                            { name: 'TypeScript', level: 65, levelName: '掌握' }
-                        ]
-                    },
-                    {
-                        name: '后端框架',
-                        icon: 'ri-leaf-fill',
-                        items: [
-                            { name: 'Spring Boot / Cloud', level: 95, levelName: '精通' },
-                            { name: 'Dubbo / gRPC', level: 85, levelName: '熟练' },
-                            { name: 'MyBatis / JPA', level: 85, levelName: '熟练' },
-                            { name: 'Netty / Vert.x', level: 70, levelName: '掌握' }
-                        ]
-                    },
-                    {
-                        name: '数据存储',
-                        icon: 'ri-database-fill',
-                        items: [
-                            { name: 'MySQL', level: 90, levelName: '精通' },
-                            { name: 'Redis', level: 90, levelName: '精通' },
-                            { name: 'Elasticsearch', level: 75, levelName: '熟练' },
-                            { name: 'MongoDB / ClickHouse', level: 65, levelName: '掌握' }
-                        ]
-                    },
-                    {
-                        name: '中间件与运维',
-                        icon: 'ri-tools-fill',
-                        items: [
-                            { name: 'Kafka / RabbitMQ', level: 85, levelName: '熟练' },
-                            { name: 'Docker / K8s', level: 80, levelName: '熟练' },
-                            { name: 'Jenkins / GitLab CI', level: 75, levelName: '熟练' },
-                            { name: 'Prometheus / Grafana', level: 70, levelName: '掌握' }
-                        ]
-                    }
-                ]);
-
-                // ===== 项目经验 =====
-                const projects = ref([
-                    {
-                        icon: 'ri-shopping-bag-fill',
-                        title: '电商交易系统',
-                        desc: '负责核心交易链路开发，涵盖订单系统、库存管理、支付对接等模块。通过 Redis 缓存优化、异步削峰等手段提升系统性能，保障大促期间系统稳定运行。',
-                        tags: ['Spring Boot', 'MySQL', 'Redis', 'RabbitMQ'],
-                        metrics: [
-                            { value: '10W+', label: '日均订单' },
-                            { value: '99.9%', label: '可用性' }
-                        ]
-                    },
-                    {
-                        icon: 'ri-flashlight-fill',
-                        title: '即时通讯服务',
-                        desc: '基于 Netty 构建的 IM 服务，支持私聊、群聊、消息已读等核心功能。采用 WebSocket 长连接 + 消息队列架构，保证消息实时性和可靠性。',
-                        tags: ['Netty', 'WebSocket', 'Redis', 'Protobuf'],
-                        metrics: [
-                            { value: '5W+', label: '在线用户' },
-                            { value: '20ms', label: '平均延迟' }
-                        ]
-                    },
-                    {
-                        icon: 'ri-search-eye-fill',
-                        title: '风控预警系统',
-                        desc: '实时风控检测系统，支持规则动态配置与热更新。通过规则引擎 + 特征库实现反欺诈、反刷单等场景，有效识别异常行为。',
-                        tags: ['Drools', 'Redis', 'MySQL', '定时任务'],
-                        metrics: [
-                            { value: '1亿+', label: '日检测量' },
-                            { value: '<100ms', label: '响应时间' }
-                        ]
-                    },
-                    {
-                        icon: 'ri-cloud-fill',
-                        title: '微服务基础架构',
-                        desc: '搭建公司微服务基础设施，包括统一网关、配置中心、链路追踪、日志收集等。基于 Spring Cloud Alibaba 体系，支撑业务服务数量持续增长。',
-                        tags: ['Spring Cloud', 'Nacos', 'Sentinel', 'SkyWalking'],
-                        metrics: [
-                            { value: '50+', label: '服务数量' },
-                            { value: '统一治理', label: '运维体系' }
-                        ]
-                    }
-                ]);
-
-                // ===== 工作经历 =====
-                const experience = ref([
-                    { date: '2021 - 至今', title: '高级后端工程师', company: '某成长型互联网公司', desc: '负责核心业务系统架构设计与优化，主导微服务改造，从零搭建监控运维体系' },
-                    { date: '2019 - 2021', title: 'Java 后端工程师', company: '某科技公司', desc: '参与电商平台后端开发，负责订单、支付等核心模块，独立完成多个业务需求' },
-                    { date: '2015 - 2019', title: '计算机科学与技术', company: '某大学 · 本科', desc: '系统学习计算机基础，积极参与技术社区，开源项目贡献者' }
-                ]);
-
-                // ===== 统计数据 =====
-                const stats = ref([
-                    { value: '5', label: '年研发经验' },
-                    { value: '50+', label: '技术博客' },
-                    { value: '100W+', label: '代码行数' },
-                    { value: '', label: '访客数', id: 'busuanzi_value_site_uv' }
-                ]);
-
-                // ===== 资源链接 =====
-                const resourceLinks = ref([
-                    { name: 'LeetCode', icon: 'ri-code-box-line', url: 'https://leetcode-cn.com/problemset/all/', desc: '算法训练' },
-                    { name: '剑指 Offer', icon: 'ri-book-open-line', url: 'https://www.nowcoder.com/ta/coding-interviews', desc: '面试宝典' },
-                    { name: 'GitHub', icon: 'ri-github-fill', url: 'https://github.com/', desc: '开源社区' }
-                ]);
-
-                // ===== 动态数据 =====
-                const typedText = ref('');
-                const hitokoto = ref('加载中...');
-                const poetry = ref('加载中...');
-                const currentYear = computed(() => new Date().getFullYear());
-
-                // ===== 可见区域状态 =====
-                const visibleSections = reactive({
-                    about: false, skills: false, projects: false,
-                    experience: false, stats: false, poetry: false, links: false
-                });
-
-                // ===== 打字效果 =====
-                const typeWriter = () => {
-                    const texts = ['架构改变世界', 'Code is Poetry', 'Stay Hungry, Stay Foolish', '高并发 · 高可用 · 高扩展'];
-                    let textIndex = 0, charIndex = 0, isDeleting = false;
-
-                    const type = () => {
-                        const current = texts[textIndex];
-                        typedText.value = isDeleting ? current.substring(0, --charIndex) : current.substring(0, ++charIndex);
-
-                        if (!isDeleting && charIndex === current.length) {
-                            setTimeout(type, 2000);
-                            isDeleting = true;
-                            return;
-                        }
-                        if (isDeleting && charIndex === 0) {
-                            isDeleting = false;
-                            textIndex = (textIndex + 1) % texts.length;
-                        }
-                        setTimeout(type, isDeleting ? 35 : 75);
-                    };
-                    type();
-                };
-
-                // ===== 粒子背景 =====
-                const initParticles = () => {
-                    const canvas = document.getElementById('particles');
-                    if (!canvas) return;
-                    const ctx = canvas.getContext('2d');
-                    let particles = [];
-                    let mouse = { x: null, y: null };
-
-                    const resize = () => {
-                        canvas.width = window.innerWidth;
-                        canvas.height = window.innerHeight;
-                    };
-                    resize();
-                    window.addEventListener('resize', resize);
-                    window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
-
-                    class Particle {
-                        constructor() {
-                            this.x = Math.random() * canvas.width;
-                            this.y = Math.random() * canvas.height;
-                            this.vx = (Math.random() - 0.5) * 0.6;
-                            this.vy = (Math.random() - 0.5) * 0.6;
-                            this.r = Math.random() * 2 + 1;
-                            this.color = Math.random() > 0.5 ? '88, 166, 255' : '163, 113, 247';
-                        }
-                        update() {
-                            this.x += this.vx;
-                            this.y += this.vy;
-                            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-                            if (mouse.x && mouse.y) {
-                                const dx = mouse.x - this.x, dy = mouse.y - this.y;
-                                const d = Math.sqrt(dx * dx + dy * dy);
-                                if (d < 150) { this.x -= dx * 0.01; this.y -= dy * 0.01; }
-                            }
-                        }
-                        draw() {
-                            ctx.beginPath();
-                            ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-                            ctx.fillStyle = `rgba(${this.color}, 0.8)`;
-                            ctx.shadowBlur = 10;
-                            ctx.shadowColor = `rgba(${this.color}, 0.5)`;
-                            ctx.fill();
-                            ctx.shadowBlur = 0;
-                        }
-                    }
-
-                    const init = () => {
-                        const count = Math.min(80, Math.floor(canvas.width * canvas.height / 15000));
-                        for (let i = 0; i < count; i++) particles.push(new Particle());
-                    };
-
-                    const animate = () => {
-                        ctx.clearRect(0, 0, canvas.width, canvas.height);
-                        particles.forEach(p => { p.update(); p.draw(); });
-                        for (let i = 0; i < particles.length; i++) {
-                            for (let j = i + 1; j < particles.length; j++) {
-                                const dx = particles[i].x - particles[j].x;
-                                const dy = particles[i].y - particles[j].y;
-                                const d = Math.sqrt(dx * dx + dy * dy);
-                                if (d < 120) {
-                                    const gradient = ctx.createLinearGradient(
-                                        particles[i].x, particles[i].y,
-                                        particles[j].x, particles[j].y
-                                    );
-                                    gradient.addColorStop(0, `rgba(${particles[i].color}, ${0.4 - d / 300})`);
-                                    gradient.addColorStop(1, `rgba(${particles[j].color}, ${0.4 - d / 300})`);
-                                    ctx.beginPath();
-                                    ctx.moveTo(particles[i].x, particles[i].y);
-                                    ctx.lineTo(particles[j].x, particles[j].y);
-                                    ctx.strokeStyle = gradient;
-                                    ctx.lineWidth = 0.8;
-                                    ctx.stroke();
-                                }
-                            }
-                        }
-                        requestAnimationFrame(animate);
-                    };
-                    init();
-                    animate();
-                };
-
-                // ===== 滚动监听 =====
-                const initScrollObserver = () => {
-                    const observer = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                            const id = entry.target.id;
-                            if (id && visibleSections.hasOwnProperty(id)) {
-                                visibleSections[id] = entry.isIntersecting;
-                            }
-                        });
-                    }, { threshold: 0.15 });
-
-                    document.querySelectorAll('.section').forEach(section => {
-                        observer.observe(section);
-                    });
-                };
-
-                // ===== 加载外部数据 =====
-                const loadExternalData = () => {
-                    // 一言
-                    fetch('https://v1.hitokoto.cn')
-                        .then(r => r.json())
-                        .then(d => { hitokoto.value = d.hitokoto + ' —— ' + (d.from || ''); })
-                        .catch(() => { hitokoto.value = '代码如诗，人生如歌。'; });
-
-                    // 诗词
-                    const js = document.createElement('script');
-                    js.src = 'https://sdk.jinrishici.com/v2/browser/jinrishici.js';
-                    js.onload = () => {
-                        jinrishici.load(r => { poetry.value = r.data.content; });
-                    };
-                    document.body.appendChild(js);
-
-                    // 访客统计
-                    const bs = document.createElement('script');
-                    bs.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
-                    bs.async = true;
-                    document.body.appendChild(bs);
-                };
-
-                onMounted(() => {
-                    typeWriter();
-                    initParticles();
-                    initScrollObserver();
-                    loadExternalData();
-
-                    // 标签页切换
-                    document.addEventListener('visibilitychange', () => {
-                        document.title = document.hidden ? '(๑•́ ₃•̀) 页面走丢了' : `${site.name} | Senior Backend Engineer`;
-                    });
-
-                    console.log(`%c⚡ ${site.name} - 探索未知`, 'color:#58a6ff;font-size:16px;font-weight:bold');
-                });
-
-                return {
-                    site, navLinks, profile, socialLinks, about, skills, projects,
-                    experience, stats, resourceLinks, typedText, hitokoto, poetry,
-                    currentYear, visibleSections
-                };
-            }
-        }).mount('#app');
-    </script>
+  <footer class="site-footer wrap"><p>© <span id="year">2026</span> 沈伟 · Shen Wei</p><p>Robotics, curiosity & practice.</p><a href="#top">回到顶部 ↑</a></footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const navLinks = [...document.querySelectorAll('.nav-links a')];
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            navLinks.forEach(link => {
+              if (link.hash === '#' + entry.target.id) link.setAttribute('aria-current', 'location');
+              else link.removeAttribute('aria-current');
+            });
+          }
+        });
+      }, { rootMargin: '-15% 0px -65% 0px', threshold: 0 });
+      document.querySelectorAll('main section[id]').forEach(section => observer.observe(section));
+    }
+  </script>
 </body>
-
 </html>

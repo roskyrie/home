@@ -1,122 +1,49 @@
-## 个人主页
+# 沈伟 · Shen Wei
 
-> 探索未知，代码为舟
+个人科研主页，展示机器人导航、异构机器人、多智能体协同与仿真学习相关经历。
 
-一个现代化的个人主页，采用 Vue 3 + 深色科技主题设计。
+**主页：** [https://roskyrie.github.io/home/](https://roskyrie.github.io/home/)
 
-**目标主页地址：** [https://roskyrie.github.io/home/](https://roskyrie.github.io/home/)
+## 页面内容
 
-此地址需要将本项目部署到 GitHub 账号 `roskyrie` 下的 `home` 仓库后才会生效。
+- 关于我与研究方向
+- ROS 2 自动巡检智能车、校园巡检无人系统、机器人仿真与学习
+- 北京航空航天大学、杭州电子科技大学教育经历
+- 编程与机器人开发工具、英语成绩及奖学金
+- 邮箱、电话／微信及 GitHub 联系方式
 
-## 特性
+页面文字和图片根据本人提供的简历整理。进行中的学习和实验按探索性工作表述；未添加论文、性能指标或未经提供的经历。原始简历 PDF 未上传至仓库。
 
-- **Vue 3 驱动** - 数据驱动的响应式页面
-- **深色科技主题** - 粒子动画背景 + 霓虹光效
-- **响应式设计** - 完美适配桌面端与移动端
-- **滚动动画** - Intersection Observer 实现的入场动画
-- **打字机效果** - 动态切换的标题文字
+## 本地预览
 
-## 技术栈
-
-- Vue 3 (CDN)
-- 原生 CSS3 (Grid + Flexbox)
-- Canvas 粒子动画
-- Remix Icon 图标库
-
-## 快速开始
+无需安装前端依赖或构建，直接启动静态文件服务器：
 
 ```bash
-# 本地预览
-npx serve . -p 3000
-
-# 或使用 Python
-python -m http.server 3000
+python3 -m http.server 3000
 ```
 
-## 部署支持
+打开 `http://localhost:3000/`。
 
-本项目支持以下静态托管平台一键部署：
+## 文件结构
 
-| 平台 | 配置文件 | 说明 |
-|------|----------|------|
-| GitHub Pages | `.github/workflows/deploy.yml` | 推送自动部署 |
-| Vercel | `vercel.json` | 导入仓库即可 |
-| Netlify | `netlify.toml` | 导入仓库即可 |
-| EdgeOne Pages | `edgeone.json` | 腾讯云 EdgeOne |
-
-### GitHub Pages 部署
-
-1. 登录 `roskyrie` 账号，在该账号下创建或 Fork 名为 `home` 的仓库，并上传本项目
-2. 启用 GitHub Pages (Settings → Pages → Source: GitHub Actions)
-3. 推送到 `master` 或 `main` 分支，自动触发部署；如果是 Fork，先在 Actions 页面启用工作流
-4. 在 Actions 中确认部署成功，再访问 [个人主页](https://roskyrie.github.io/home/)
-
-GitHub Pages 项目站点的默认地址由仓库所属账号和仓库名决定。仅修改本文件或 `package.json` 不会改变线上地址；需要目标仓库实际属于 `roskyrie`。迁移完成后，本地远程地址应改为 `https://github.com/roskyrie/home.git`。
-
-### Vercel 部署
-
-```bash
-# 安装 Vercel CLI
-npm i -g vercel
-
-# 部署
-vercel
+```text
+index.html                    页面内容与轻量导航脚本
+static/css/profile.css        科研主页样式与移动端适配
+static/img/           个人照片与简历中的项目图片
+static/img/avatar.svg         网站图标
+.github/workflows/deploy.yml  GitHub Pages 自动部署
 ```
 
-### Netlify 部署
+`static/css/index.css` 保留原始模板样式，当前页面使用 `profile.css`。
 
-1. 连接 GitHub 仓库
-2. 构建命令留空，发布目录填 `.`
+## 修改与发布
 
-## 项目结构
+直接修改 `index.html` 中对应的文字、链接和图片。更新 `static/css/profile.css` 可调整布局和配色。
 
-```
-├── index.html          # 主页面 (Vue 3)
-├── static/
-│   └── css/
-│       └── index.css   # 样式文件
-├── vercel.json         # Vercel 配置
-├── netlify.toml        # Netlify 配置
-├── edgeone.json        # EdgeOne 配置
-├── package.json        # 项目配置
-└── .github/
-    └── workflows/
-        └── deploy.yml  # GitHub Actions 部署
-```
+GitHub 仓库为 `roskyrie/home`，Pages 发布源为 **GitHub Actions**。推送到 `master` 或 `main` 后，工作流自动部署到主页地址。
 
-## 自定义
+原巡检项目源码链接按简历保留为 `Kobe24forever263/Learn_ros_patrol`；该项目属于另一个 GitHub 账号，不能仅因主页迁移而替换其所有者。
 
-修改 `index.html` 中的数据对象即可自定义内容：
+## 致谢与许可
 
-```javascript
-const site = reactive({
-    name: '未寻',           // 站点名称
-    slogan: '探索未知，代码为舟'
-});
-
-const profile = reactive({
-    avatar: '...',         // 头像 URL
-    title: '...',          // 职位
-    bio: '...'             // 简介
-});
-```
-
-## 外部 API
-
-- [一言](https://hitokoto.cn/) - 随机名言
-- [今日诗词](https://www.jinrishici.com/) - 古诗词
-- [不蒜子](http://busuanzi.ibruce.info/) - 访客统计
-
-## License
-
-[MIT License](LICENSE)
-
-Copyright (c) 2019-present 未寻
-
-本项目采用 MIT 协议开源，您可以：
-- ✅ 商业使用
-- ✅ 修改代码
-- ✅ 分发副本
-- ✅ 私人使用
-
-唯一要求是在副本中保留版权声明和许可声明。
+本项目基于 [quietseek/home](https://github.com/quietseek/home) 模板改造。保留原始 [MIT License](LICENSE) 及其版权声明。个人照片与项目图片来自本人提供的简历，MIT 许可不构成对肖像或第三方素材权利的额外授权。
