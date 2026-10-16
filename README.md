@@ -4,7 +4,9 @@
 
 一个现代化的个人主页，采用 Vue 3 + 深色科技主题设计。
 
-**预览地址：** [https://quietseek.github.io/home](https://quietseek.github.io/home)
+**目标主页地址：** [https://roskyrie.github.io/home/](https://roskyrie.github.io/home/)
+
+此地址需要将本项目部署到 GitHub 账号 `roskyrie` 下的 `home` 仓库后才会生效。
 
 ## 特性
 
@@ -44,9 +46,12 @@ python -m http.server 3000
 
 ### GitHub Pages 部署
 
-1. Fork 本仓库
+1. 登录 `roskyrie` 账号，在该账号下创建或 Fork 名为 `home` 的仓库，并上传本项目
 2. 启用 GitHub Pages (Settings → Pages → Source: GitHub Actions)
-3. 推送代码自动触发部署
+3. 推送到 `master` 或 `main` 分支，自动触发部署；如果是 Fork，先在 Actions 页面启用工作流
+4. 在 Actions 中确认部署成功，再访问 [个人主页](https://roskyrie.github.io/home/)
+
+GitHub Pages 项目站点的默认地址由仓库所属账号和仓库名决定。仅修改本文件或 `package.json` 不会改变线上地址；需要目标仓库实际属于 `roskyrie`。迁移完成后，本地远程地址应改为 `https://github.com/roskyrie/home.git`。
 
 ### Vercel 部署
 
